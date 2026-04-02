@@ -1,0 +1,77 @@
+/* D-pad — bottom-left in landscape */
+#dpad {
+  position: absolute;
+  bottom: 16px;
+  left: 72px;
+  width: 160px;
+  height: 160px;
+  z-index: 15;
+}
+
+#dpad.hidden {
+  display: none;
+}
+
+.dpad-btn {
+  position: absolute;
+  width: 48px;
+  height: 48px;
+  border: 1px solid rgba(100, 100, 160, 0.4);
+  border-radius: 8px;
+  background: rgba(15, 15, 30, 0.8);
+  backdrop-filter: blur(6px);
+  color: #aaaadd;
+  font-size: 20px;
+  cursor: pointer;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.1s;
+}
+
+.dpad-btn:active {
+  background: rgba(70, 70, 140, 0.6);
+}
+
+/* Layout:
+       [forward]
+  [turnL] [turnR]
+  [strL]   [strR]
+       [backward]
+*/
+.dpad-forward     { left: 56px;  top: 0; }
+.dpad-turn-left   { left: 0;     top: 48px; }
+.dpad-turn-right  { left: 112px; top: 48px; }
+.dpad-strafe-left { left: 0;     top: 104px; }
+.dpad-strafe-right{ left: 112px; top: 104px; }
+.dpad-backward    { left: 56px;  top: 104px; }
+
+/* Back to edit button */
+#back-to-edit-btn {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  padding: 8px 16px;
+  border: 1px solid rgba(100, 100, 160, 0.4);
+  border-radius: 8px;
+  background: rgba(15, 15, 30, 0.85);
+  backdrop-filter: blur(8px);
+  color: #aaaadd;
+  font-size: 14px;
+  font-family: system-ui, sans-serif;
+  cursor: pointer;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+  z-index: 15;
+  transition: background 0.15s;
+}
+
+#back-to-edit-btn.hidden {
+  display: none;
+}
+
+#back-to-edit-btn:hover {
+  background: rgba(50, 50, 90, 0.8);
+}
