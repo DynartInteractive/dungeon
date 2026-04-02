@@ -186,7 +186,7 @@ export class BuildCamera {
     forward.y = 0;
     forward.normalize();
 
-    this.target.addScaledVector(right, -dx * panSpeed);
+    this.target.addScaledVector(right, dx * panSpeed);
     this.target.addScaledVector(forward, dy * panSpeed);
 
     this.updateCamera();

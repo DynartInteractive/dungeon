@@ -48,6 +48,7 @@ export class Player {
     this._endPos = new THREE.Vector3();
     this._startAngle = 0;
     this._endAngle = 0;
+    this._cumulativeAngle = 0;
 
     // Input queue (allows buffering one move during animation)
     this._inputQueue = [];
@@ -61,6 +62,8 @@ export class Player {
     this._moving = false;
     this._turning = false;
     this._inputQueue = [];
+
+    this._cumulativeAngle = DIR_ANGLES[facing];
 
     const pos = this._worldPos(x, y);
     this.camera.position.set(pos.x, EYE_HEIGHT, pos.z);
@@ -163,14 +166,10 @@ export class Player {
     const newIdx = (facingIdx + direction + 4) % 4;
     const newFacing = TURN_ORDER[newIdx];
 
-    this._startAngle = this.camera.rotation.y;
-    this._endAngle = DIR_ANGLES[newFacing];
-
-    // Handle wrap-around (e.g., north→west should go +90, not -270)
-    let diff = this._endAngle - this._startAngle;
-    if (diff > Math.PI) diff -= Math.PI * 2;
-    if (diff < -Math.PI) diff += Math.PI * 2;
-    this._endAngle = this._startAngle + diff;
+    // direction: -1 = left (+90deg), +1 = right (-90deg)
+    this._startAngle = this._cumulativeAngle;
+    this._cumulativeAngle += direction === 1 ? -Math.PI / 2 : Math.PI / 2;
+    this._endAngle = this._cumulativeAngle;
 
     this._animStart = 0;
     this._animDuration = TURN_DURATION;
