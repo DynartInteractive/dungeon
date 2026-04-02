@@ -41,7 +41,7 @@ export class GridVisual {
     plane.rotation.x = -Math.PI / 2;
     plane.position.set(
       (width * tileSize) / 2,
-      0,
+      -0.005,
       (height * tileSize) / 2
     );
     plane.receiveShadow = true;

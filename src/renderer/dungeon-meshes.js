@@ -2,8 +2,8 @@ import * as THREE from 'three';
 
 const WALL_HEIGHT = 1.0;
 const WALL_THICKNESS = 0.12;
-const COLUMN_SIZE = 0.15;
-const COLUMN_HEIGHT = 1.0;
+const COLUMN_SIZE = 0.25;
+const COLUMN_HEIGHT = 1.02;
 const DOOR_HEIGHT = 0.9;
 const DOOR_THICKNESS = 0.06;
 const ENTITY_MARKER_SIZE = 0.15;
